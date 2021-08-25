@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: /usr/bin/xcodebuild clean build -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks" 
+      run: /usr/bin/xcodebuild clean build -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks" -allowProvisioningUpdates
