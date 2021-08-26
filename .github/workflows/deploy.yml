@@ -34,7 +34,7 @@ jobs:
 
       - name: Build app
         #run: |
-        exec gem install xcpretty
+        run: gem install xcpretty
         run: /usr/bin/xcodebuild clean build archive -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks"  -archivePath "Landmarks.xcarchive"  -destination "generic/platform=iOS" -allowProvisioningUpdates | xcpretty
           #fastlane run build_app
 
