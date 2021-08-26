@@ -32,9 +32,11 @@ jobs:
         run: |
           exec .github/scripts/import-profile.sh
 
+      - name: install Gem
+        run: gem install xcpretty
+
       - name: Build app
         #run: |
-        run: gem install xcpretty
         run: /usr/bin/xcodebuild clean build archive -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks"  -archivePath "Landmarks.xcarchive"  -destination "generic/platform=iOS" -allowProvisioningUpdates | xcpretty
           #fastlane run build_app
 
