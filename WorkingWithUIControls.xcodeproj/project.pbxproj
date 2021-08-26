@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B950912126D6CDF400043351 /* iosDistgitAction-2.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = B950912026D6CDF400043351 /* iosDistgitAction-2.mobileprovision */; };
-		B950912326D6E46600043351 /* Certificates.p12 in Resources */ = {isa = PBXBuildFile; fileRef = B950912226D6E46600043351 /* Certificates.p12 */; };
 		C20D77EE24B665D7002E7AEA /* LandmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D77ED24B665D7002E7AEA /* LandmarksApp.swift */; };
 		C20D77F024B665D7002E7AEA /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20D77EF24B665D7002E7AEA /* LandmarkDetail.swift */; };
 		C20D77F224B665D8002E7AEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C20D77F124B665D8002E7AEA /* Assets.xcassets */; };
@@ -47,7 +46,6 @@
 		8C249B054B1162DF28CD504A /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		9468E2AE3DC3F388E84A29BD /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		B950912026D6CDF400043351 /* iosDistgitAction-2.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iosDistgitAction-2.mobileprovision"; sourceTree = "<group>"; };
-		B950912226D6E46600043351 /* Certificates.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Certificates.p12; sourceTree = "<group>"; };
 		C20D77EA24B665D7002E7AEA /* Landmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Landmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C20D77ED24B665D7002E7AEA /* LandmarksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksApp.swift; sourceTree = "<group>"; };
 		C20D77EF24B665D7002E7AEA /* LandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 			children = (
 				C2AC4E9F24DE2957005E019B /* README.md */,
 				B950912026D6CDF400043351 /* iosDistgitAction-2.mobileprovision */,
-				B950912226D6E46600043351 /* Certificates.p12 */,
 				C20D77EC24B665D7002E7AEA /* Landmarks */,
 				C20D77EB24B665D7002E7AEA /* Products */,
 				4C8A402C77B3496648F32598 /* Configuration */,
@@ -312,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C20D782624B6CE82002E7AEA /* hikeData.json in Resources */,
-				B950912326D6E46600043351 /* Certificates.p12 in Resources */,
 				C20D77F524B665D8002E7AEA /* Preview Assets.xcassets in Resources */,
 				C20D77F224B665D8002E7AEA /* Assets.xcassets in Resources */,
 				B950912126D6CDF400043351 /* iosDistgitAction-2.mobileprovision in Resources */,
