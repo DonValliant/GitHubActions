@@ -36,9 +36,9 @@ jobs:
         run: gem install xcpretty
 
       - name: Build app
-        #run: |
-        run: /usr/bin/xcodebuild clean archive -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks"  -archivePath "Landmarks.xcarchive"  -destination "generic/platform=iOS" -allowProvisioningUpdates | xcpretty
-          #fastlane run build_app
+        #run: /usr/bin/xcodebuild clean archive -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks"  -archivePath "Landmarks.xcarchive"  -destination "generic/platform=iOS" -allowProvisioningUpdates | xcpretty
+        run: |
+          fastlane run build_app
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
