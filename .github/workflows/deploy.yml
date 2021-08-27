@@ -31,7 +31,12 @@ jobs:
           PROVISIONING_PROFILE_DATA: ${{ secrets.PROVISIONING_PROFILE_DATA }}
         run: |
           exec .github/scripts/import-profile.sh
-
+      - name: Clean
+        run: swift clean -v
+      - name: Build
+        run: swift build -v
+      - name: Run tests
+        run: swift test -v
       - name: Build app
         #run: /usr/bin/xcodebuild clean archive -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks"  -archivePath "Landmarks.xcarchive"  -destination "generic/platform=iOS" -allowProvisioningUpdates | xcpretty
         run: |
