@@ -31,8 +31,6 @@ jobs:
           PROVISIONING_PROFILE_DATA: ${{ secrets.PROVISIONING_PROFILE_DATA }}
         run: |
           exec .github/scripts/import-profile.sh
-      - name: Clean
-        run: swift clean -v
       - name: Build
         run: swift build -v
       - name: Run tests
