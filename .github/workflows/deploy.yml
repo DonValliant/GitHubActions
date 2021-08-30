@@ -37,7 +37,7 @@ jobs:
         run: swift test -v
       - name: parse test results
         run: |
-          exec .github/scripts/parseSonarShellResult.sh
+          exec .github/scripts/parseForScan.sh
       - name: Build app
         run: |
           fastlane run build_app
