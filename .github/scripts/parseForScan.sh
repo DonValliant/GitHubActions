@@ -17,8 +17,12 @@ cd  x86_64-apple-macosx
 pwd
 ls -laF
 
+cd debug
 
-bash /Users/runner/work/GitHubActions/GitHubActions/sonar-scanning-examples/swift-coverage/swift-coverage-example/xccov-to-sonarqube-generic.sh /Users/runner/work/GitHubActions/GitHubActions/.build/x86_64-apple-macosx/debug/GitHubActionsPackageTests.xctest > sonarqube-generic-coverage.xm
+pwd
+ls -laF
+
+#bash /Users/runner/work/GitHubActions/GitHubActions/sonar-scanning-examples/swift-coverage/swift-coverage-example/xccov-to-sonarqube-generic.sh /Users/runner/work/GitHubActions/GitHubActions/.build/x86_64-apple-macosx/debug/GitHubActionsPackageTests.xctest > sonarqube-generic-coverage.xm
 # strip Objective C out of file
 #cat temp-coverage.xml | sh parseSonarShellResult.sh> sonarqube-generic-coverage.xml
 
