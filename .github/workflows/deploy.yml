@@ -39,12 +39,6 @@ jobs:
         #run: /usr/bin/xcodebuild clean archive -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks"  -archivePath "Landmarks.xcarchive"  -destination "generic/platform=iOS" -allowProvisioningUpdates | xcpretty
         run: |
           fastlane run build_app
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
