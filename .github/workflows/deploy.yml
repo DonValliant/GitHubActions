@@ -35,7 +35,7 @@ jobs:
         run: swift build -v
       - name: Run tests
         #run: swift test -v
-        run: /usr/bin/xcodebuild clean test -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks" | xcpretty
+        run: /usr/bin/xcodebuild clean test -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks" -resultBundlePath  /Test.xcresult GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES| xcpretty
       - name: parse test results
         run: |
           exec .github/scripts/parseForScan.sh

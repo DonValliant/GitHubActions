@@ -8,7 +8,7 @@ set -x
 pwd
 ls -laF
 git clone https://github.com/SonarSource/sonar-scanning-examples.git
-bash /Users/runner/work/GitHubActions/GitHubActions/sonar-scanning-examples/swift-coverage/swift-coverage-example/xccov-to-sonarqube-generic.sh /Users/runner/work/GitHubActions/GitHubActions/.build/x86_64-apple-macosx/debug/GitHubActionsPackageTests.xctest > sonarqube-generic-coverage.xml
+bash /Users/runner/work/GitHubActions/GitHubActions/sonar-scanning-examples/swift-coverage/swift-coverage-example/xccov-to-sonarqube-generic.sh /Test.xcresult > sonarqube-generic-coverage.xml
 # strip Objective C out of file
 #cat temp-coverage.xml | sh parseSonarShellResult.sh> sonarqube-generic-coverage.xml
 
