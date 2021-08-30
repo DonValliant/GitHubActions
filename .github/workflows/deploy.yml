@@ -35,8 +35,10 @@ jobs:
         run: swift build -v
       - name: Run tests
         run: swift test -v
+      - name: parse test results
+        run: |
+          exec .github/scripts/parseSonarShellResult.sh
       - name: Build app
-        #run: /usr/bin/xcodebuild clean archive -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks"  -archivePath "Landmarks.xcarchive"  -destination "generic/platform=iOS" -allowProvisioningUpdates | xcpretty
         run: |
           fastlane run build_app
       - name: Upload build artifacts
