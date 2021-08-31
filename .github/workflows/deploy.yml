@@ -35,10 +35,28 @@ jobs:
         run: swift build -v
       - name: Run tests
         #run: swift test -v --enable-code-coverage
-        run: /usr/bin/xcodebuild clean test -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks" -resultBundlePath  Test.xcresult -destination "platform=iOS Simulator,name=iPhone 8" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES| xcpretty
+        run: /usr/bin/xcodebuild clean guild test -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks" -resultBundlePath  Test.xcresult -destination "platform=iOS Simulator,name=iPhone 8" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES| xcpretty
       - name: parse test results
         run: |
           exec .github/scripts/parseForScan.sh
+      - name: Download and set up sonar-scanner
+        env:
+          SONAR_SCANNER_DOWNLOAD_URL: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.3.0.2102.zip
+        run: |
+          echo "$HOME"
+          echo $HOME
+          mkdir -p $HOME/.sonar
+          curl -sSLo $HOME/.sonar/sonar-scanner.zip ${{ env.SONAR_SCANNER_DOWNLOAD_URL }}
+          unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
+          echo "$HOME/.sonar/sonar-scanner-sonar-scanner-4.3.0.2102/bin" >> $GITHUB_PATH
+          echo "$GITHUB_PATH"
+          echo $GITHUB_PATH
+      - name: Run sonar-scanner
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          sonar-scanner --define sonar.host.url="${{ env.SONAR_SERVER_URL }}" --define sonar.cfamily.build-wrapper-output="${{ env.BUILD_WRAPPER_OUT_DIR }}"
       - name: Build app
         run: |
           fastlane run build_app
