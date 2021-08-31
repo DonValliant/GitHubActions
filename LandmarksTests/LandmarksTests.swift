@@ -33,6 +33,9 @@ class LandmarksTests: XCTestCase {
         let landmarks = ModelData().landmarks
         let landmarklName = landmarks[4].name
         XCTAssertEqual(landmarklName, "Twin Lake")
+        
+        let profileTest = Profile.default
+        XCTAssertEqual(profileTest.seasonalPhoto,Profile.Season.winter)    
     }
 
 
