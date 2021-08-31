@@ -39,7 +39,7 @@ jobs:
       - name: Run build-wrapper
         run: |
           echo "env.BUILD_WRAPPER_OUT_DIR"
-          echod env.BUILD_WRAPPER_OUT_DIR
+          echo env.BUILD_WRAPPER_OUT_DIR
           build-wrapper-macosx-x86 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} swift test
       - name: Run sonar-scanner
         env:
