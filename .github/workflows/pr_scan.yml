@@ -1,9 +1,10 @@
 name: Scan PR
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-
+  push:
+    branches: [ master ]
+    tags: [ v* ]
+    
 jobs:
 
   build:
