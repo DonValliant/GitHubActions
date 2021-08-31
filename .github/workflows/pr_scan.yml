@@ -1,0 +1,75 @@
+name: Scan PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+
+  build:
+    env:
+      sonarToken: ${{ secrets.SONAR_TOKEN }}
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: n1hility/cancel-previous-runs@v2
+      with:
+        token: ${{ secrets.MANUAL_ACTION_TOKEN }}
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '11'
+
+    - name: Select latest Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
+    - name: Install Tools
+      run: |
+        brew install sonar-scanner
+        gem install slather
+
+    - name: Validate 3DS2 SDK version
+      run: |
+        Scripts/validate-3ds2-SDK-version.sh
+
+    - name: Build and test
+      run: |
+        xcodebuild -version
+        xcodebuild clean build test -project "WorkingWithUIControls.xcodeproj" -scheme "Landmarks" -resultBundlePath  Test.xcresult -destination "platform=iOS Simulator,name=iPhone 8" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES | xcpretty && exit ${PIPESTATUS[0]}
+      env:
+        project: 'Adyen.xcodeproj'
+        params: '-derivedDataPath ./DerivedData -enableCodeCoverage YES'
+        scheme: 'AdyenUIHost'
+        destination: 'name=iPhone 11'
+
+    - name: Slather
+      run: |
+        slather coverage --sonarqube-xml ${params} ${project}
+      env:
+        project: 'Adyen.xcodeproj'
+        params: '
+        --build-directory ./DerivedData
+        --output-directory ./reports
+        --scheme AdyenUIHost
+        --binary-basename Adyen
+        --binary-basename AdyenCard
+        --binary-basename AdyenDropIn
+        --binary-basename AdyenWeChatPay
+        --binary-basename AdyenComponents
+        --binary-basename AdyenEncryption
+        --binary-basename AdyenActions
+        --binary-basename AdyenSwiftUI'
+
+    - name: SwiftLint
+      run: |
+        fastlane run swiftlint output_file:"./reports/swiftlint.json" reporter:"json" ignore_exit_status:"true"
+
+    - name: Run Sonar
+      if: ${{ env.sonarToken != 0 }}
+      run: |
+        git fetch --unshallow --no-tags
+        sonar-scanner -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
