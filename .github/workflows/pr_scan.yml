@@ -46,7 +46,7 @@ jobs:
         params: '
         --build-directory ./DerivedData
         --output-directory ./reports
-        --scheme Landmarks
+        --scheme Landmarks'
 
     - name: SwiftLint
       run: |
