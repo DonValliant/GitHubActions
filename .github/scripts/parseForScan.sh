@@ -6,6 +6,7 @@ set -x
 # write your script here
 # clone and generate xml file using xccov-to-sonarqube-generic.sh
 pwd
+cd .build
 ls -laF
 git clone https://github.com/SonarSource/sonar-scanning-examples.git
 bash /Users/runner/work/GitHubActions/GitHubActions/sonar-scanning-examples/swift-coverage/swift-coverage-example/xccov-to-sonarqube-generic.sh /Test.xcresult > sonarqube-generic-coverage.xml
