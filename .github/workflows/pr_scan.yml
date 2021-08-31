@@ -42,19 +42,11 @@ jobs:
       run: |
         slather coverage --sonarqube-xml ${params} ${project}
       env:
-        project: 'Adyen.xcodeproj'
+        project: 'WorkingWithUIControls.xcodeproj'
         params: '
         --build-directory ./DerivedData
         --output-directory ./reports
-        --scheme AdyenUIHost
-        --binary-basename Adyen
-        --binary-basename AdyenCard
-        --binary-basename AdyenDropIn
-        --binary-basename AdyenWeChatPay
-        --binary-basename AdyenComponents
-        --binary-basename AdyenEncryption
-        --binary-basename AdyenActions
-        --binary-basename AdyenSwiftUI'
+        --scheme Landmarks
 
     - name: SwiftLint
       run: |
